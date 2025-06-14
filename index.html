@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8周AI求职冲刺计划</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans SC', sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+        }
+        .week-header {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .week-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-in-out;
+        }
+        .week-content.open {
+            max-height: 5000px; /* Adjust as needed */
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .week-header.open .chevron {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+        <header class="text-center mb-10">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">8周AI冲刺计划</h1>
+            <p class="mt-2 text-lg text-slate-600">从 2025-06-10 开始，开启你的 AI 职业生涯</p>
+        </header>
+
+        <div id="plan-container" class="space-y-4">
+            <!-- Weeks will be injected here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        const planData = [
+            // 第一阶段：Python 数据科学与机器学习基础
+            {
+                week: 1,
+                title: "第一阶段 (第1周): Python数据科学工具链",
+                goal: "精通数据分析与处理工具链，为机器学习打下坚实基础。",
+                days: [
+                    { day: 1, topic: "环境配置 & Git入门", concepts: ["Anaconda与Jupyter Notebook", "Git基本命令(clone, add, commit, push)", "项目结构初始化"], task: "创建GitHub仓库，配置conda环境，并完成第一次commit。", resources: ["Pro Git book (Chapter 1-2)", "Anaconda官方文档"] },
+                    { day: 2, topic: "NumPy核心: ndarray", concepts: ["ndarray创建与属性", "数据类型", "向量化操作"], task: "创建不同维度和类型的ndarray，并练习基本的数学运算。", resources: ["NumPy official quickstart", "CS231n Python/Numpy Tutorial"] },
+                    { day: 3, topic: "NumPy高级操作", concepts: ["索引、切片与广播(Broadcasting)", "常用统计函数", "线性代数模块"], task: "使用广播机制完成矩阵运算，并用统计函数分析随机数据。", resources: ["NumPy documentation on Broadcasting", "《利用Python进行数据分析》第4章"] },
+                    { day: 4, topic: "Pandas基础: Series与DataFrame", concepts: ["Series和DataFrame的创建", "基本索引与数据选择(loc, iloc)", "数据查看(head, tail, info, describe)"], task: "加载一个CSV文件为DataFrame，并使用多种方式查看和选择数据。", resources: ["Pandas official '10 minutes to pandas'", "Data School Pandas Q&A (YouTube)"] },
+                    { day: 5, topic: "Pandas数据清洗", concepts: ["处理缺失值(dropna, fillna)", "处理重复值(duplicated, drop_duplicates)", "数据类型转换(astype)"], task: "对一个有缺失和重复值的数据集进行清洗，并转换列的数据类型。", resources: ["Pandas documentation on working with missing data", "Kaggle Data Cleaning Tutorial"] },
+                    { day: 6, topic: "Pandas数据聚合与合并", concepts: ["分组聚合(groupby)", "数据合并(merge, concat, join)"], task: "使用groupby对数据集进行分组统计，并将两个相关的DataFrame合并。", resources: ["Pandas documentation on merge/join/concat", "Pandas Cookbook - Grouping"] },
+                    { day: 7, topic: "数据可视化: Matplotlib & Seaborn", concepts: ["Matplotlib基本绘图(plot, scatter, hist)", "Seaborn常用统计图(boxplot, heatmap)", "图形美化与子图"], task: "使用Pandas清洗后的数据，用Matplotlib和Seaborn绘制至少3种不同的统计图。", resources: ["Seaborn official tutorials", "Matplotlib official tutorials"] },
+                ]
+            },
+            {
+                week: 2,
+                title: "第一阶段 (第2周): 经典机器学习算法",
+                goal: "掌握传统机器学习算法的核心思想与Scikit-learn应用。",
+                days: [
+                    { day: 8, topic: "机器学习概览 & Scikit-learn入门", concepts: ["监督/非监督学习", "训练集/测试集", "Scikit-learn API范式(fit, predict, transform)"], task: "使用Scikit-learn加载内置数据集，并完成数据拆分。", resources: ["Scikit-learn official getting started guide", "Google Machine Learning Crash Course"] },
+                    { day: 9, topic: "线性回归", concepts: ["损失函数(MSE)", "梯度下降", "模型评估(R^2)"], task: "使用Scikit-learn对波士顿房价数据集训练一个线性回归模型并评估。", resources: ["StatQuest: Linear Regression (YouTube)", "Scikit-learn LinearRegression documentation"] },
+                    { day: 10, topic: "逻辑回归与分类", concepts: ["Sigmoid函数", "分类评估指标(准确率, 精确率, 召回率, F1)", "混淆矩阵"], task: "使用逻辑回归对鸢尾花数据集进行分类，并解读混淆矩阵。", resources: ["StatQuest: Logistic Regression (YouTube)", "Scikit-learn LogisticRegression documentation"] },
+                    { day: 11, topic: "决策树与随机森林", concepts: ["信息熵/基尼不纯度", "剪枝", "集成学习(Bagging)"], task: "分别使用决策树和随机森林训练一个分类模型，并比较它们的性能。", resources: ["StatQuest: Decision Trees / Random Forests (YouTube)", "《机器学习》-周志华 第4章"] },
+                    { day: 12, topic: "特征工程基础", concepts: ["特征缩放(StandardScaler, MinMaxScaler)", "独热编码(OneHotEncoder)"], task: "创建一个包含数值和类别特征的Pipeline，预处理数据。", resources: ["Scikit-learn documentation on preprocessing", "Kaggle course on Feature Engineering"] },
+                    { day: 13, topic: "第一阶段复盘与挑战", concepts: ["复习所有概念", "梳理知识体系"], task: "选择一个Kaggle入门比赛(如Titanic)，独立完成数据分析、特征工程和模型训练的全过程。", resources: ["Kaggle Titanic Competition"] },
+                    { day: 14, topic: "休息与缓冲", concepts: ["回顾笔记", "整理代码"], task: "整理前两周的GitHub项目，写好README.md。", resources: ["GitHub"] },
+                ]
+            },
+             // 第二阶段：深度学习核心与专项突破
+            {
+                week: 3,
+                title: "第二阶段 (第3周): PyTorch入门与神经网络基础",
+                goal: "深入掌握PyTorch框架，理解神经网络工作原理。",
+                days: [
+                    { day: 15, topic: "深度学习概览 & PyTorch Tensors", concepts: ["神经网络基本构成", "PyTorch Tensor的创建与操作", "Tensor与NumPy的转换"], task: "练习Tensor的创建、索引、切片和数学运算。", resources: ["PyTorch official 'Tensors' tutorial", "3Blue1Brown: Neural Networks series (YouTube)"] },
+                    { day: 16, topic: "PyTorch Autograd自动微分", concepts: ["计算图", "`requires_grad`属性", "`backward()`和`grad`"], task: "手动创建一个简单的计算图，并使用autograd计算梯度。", resources: ["PyTorch official 'A GENTLE INTRODUCTION TO TORCH.AUTOGRAD'"] },
+                    { day: 17, topic: "构建神经网络: `nn.Module`", concepts: ["`nn.Module`与`nn.Linear`", "`forward`方法", "激活函数(ReLU, Sigmoid)"], task: "使用`nn.Module`搭建一个简单的全连接网络模型。", resources: ["PyTorch official 'Build the Neural Network' tutorial"] },
+                    { day: 18, topic: "损失函数与优化器", concepts: ["常用损失函数(MSELoss, CrossEntropyLoss)", "优化器(SGD, Adam)", "模型训练的基本循环"], task: "为前一天搭建的网络定义损失函数和优化器，并编写伪训练代码。", resources: ["PyTorch official 'Optimization' tutorial", "StatQuest: Adam Optimizer (YouTube)"] },
+                    { day: 19, topic: "数据集处理: Dataset & DataLoader", concepts: ["`torch.utils.data.Dataset`", "`torch.utils.data.DataLoader`", "数据批处理(Batching)"], task: "创建一个自定义Dataset类来加载一个虚拟数据集。", resources: ["PyTorch official 'Datasets & DataLoaders' tutorial"] },
+                    { day: 20, topic: "项目一启动: CIFAR-10图像分类", concepts: ["项目目标分析", "Torchvision数据集", "数据预处理(Transforms)"], task: "使用torchvision加载CIFAR-10数据集，并定义数据增强和归一化的transforms。", resources: ["PyTorch official tutorial on 'Training a Classifier'"] },
+                    { day: 21, topic: "卷积神经网络(CNN)理论", concepts: ["卷积层", "池化层", "CNN基本结构(LeNet-5)"], task: "用纸笔或工具手动计算一个简单的卷积和池化过程。", resources: ["CS231n notes on CNNs", "StatQuest: Convolutional Neural Networks (YouTube)"] },
+                ]
+            },
+            {
+                week: 4,
+                title: "第二阶段 (第4周): 深度学习项目实战",
+                goal: "完成第一个端到端深度学习项目，巩固PyTorch技能。",
+                days: [
+                    { day: 22, topic: "项目一: 构建CNN模型", concepts: ["使用`nn.Conv2d`和`nn.MaxPool2d`", "计算卷积后的尺寸", "模型结构设计"], task: "使用`nn.Module`为CIFAR-10项目搭建一个简单的CNN模型。", resources: ["PyTorch official 'Build the Neural Network' tutorial"] },
+                    { day: 23, topic: "项目一: 训练与验证循环", concepts: ["将模型移至GPU", "完整的训练循环代码", "在验证集上评估模型"], task: "编写完整的训练脚本，在CIFAR-10上训练你的CNN模型一个epoch，并打印损失和准确率。", resources: ["PyTorch official tutorial on 'Training a Classifier'"] },
+                    { day: 24, topic: "项目一: 模型调优与可视化", concepts: ["学习率调整", "过拟合与欠拟合", "使用TensorBoard可视化训练过程"], task: "训练模型多个epoch，并尝试调整学习率。使用TensorBoard记录损失和准确率曲线。", resources: ["PyTorch TensorBoard Tutorial", "DeepLearning.AI Short Course on 'Finetuning Large Language Models'"] },
+                    { day: 25, topic: "项目一: 模型保存与加载", concepts: ["`torch.save`和`torch.load`", "保存整个模型 vs. 只保存状态字典", "模型推理"], task: "保存你训练好的模型权重，并编写脚本加载模型对单张图片进行预测。", resources: ["PyTorch official tutorial on 'Saving and Loading Models'"] },
+                    { day: 26, topic: "项目一: 代码重构与总结", concepts: ["将代码模块化(config, model, train.py)", "编写项目`README.md`", "记录实验结果"], task: "重构你的项目代码，使其结构清晰，并撰写详细的`README.md`文件。", resources: ["A guide to writing good READMEs"] },
+                    { day: 27, topic: "第二阶段复盘", concepts: ["回顾PyTorch核心组件", "总结CNN原理", "梳理项目流程"], task: "画出PyTorch训练一个模型的完整流程图，从数据加载到模型评估。", resources: ["Your own project code and notes"] },
+                    { day: 28, topic: "休息与缓冲", concepts: ["放松", "思考"], task: "将项目一完整地推送到GitHub。", resources: ["GitHub"] },
+                ]
+            },
+            // The rest of the weeks would follow a similar detailed structure
+            // For brevity, the following weeks are summarized. The full HTML would have them detailed.
+             {
+                week: 5,
+                title: "第三阶段 (第5周): API开发与模型封装",
+                goal: "掌握将模型封装成API服务的基础。",
+                days: [
+                    { day: 29, topic: "Web API基础与HTTP协议", concepts: ["RESTful API", "HTTP方法(GET, POST)", "JSON格式"], task: "使用Python的`requests`库调用一个公开API。", resources: ["MDN Web Docs: An overview of HTTP"] },
+                    { day: 30, topic: "FastAPI入门", concepts: ["路径操作", "请求体(Body)", "Pydantic数据模型"], task: "创建一个简单的FastAPI应用，实现一个Hello World和一个接收JSON的POST端点。", resources: ["FastAPI official tutorial"] },
+                    { day: 31, topic: "项目二启动: 情感分析API", concepts: ["项目规划", "选择预训练模型(如Hugging Face)", "定义API输入输出"], task: "使用Hugging Face Transformers库加载一个预训练的情感分析模型，并测试其功能。", resources: ["Hugging Face Transformers documentation"] },
+                    { day: 32, topic: "项目二: 集成模型到FastAPI", concepts: ["在FastAPI中加载模型", "设计预测函数", "处理异步请求"], task: "将情感分析模型集成到FastAPI应用中，创建一个`/predict`端点。", resources: ["FastAPI documentation on bigger applications"] },
+                    { day: 33, topic: "项目二: 错误处理与日志", concepts: ["HTTPException", "Python `logging`模块", "中间件"], task: "为你的API添加基本的错误处理和日志记录功能。", resources: ["FastAPI documentation on error handling"] },
+                    { day: 34, topic: "API测试", concepts: ["使用`requests`测试", "FastAPI自动交互文档(Swagger UI)"], task: "使用Swagger UI和`requests`脚本对你的API进行全面测试。", resources: ["FastAPI documentation on testing"] },
+                    { day: 35, topic: "第三阶段复盘(Part 1)", concepts: ["回顾FastAPI核心", "API设计原则"], task: "为你的情感分析API项目撰写API文档。", resources: ["Your own project code"] }
+                ]
+            },
+            {
+                week: 6,
+                title: "第三阶段 (第6周): Docker容器化与部署",
+                goal: "掌握使用Docker容器化AI应用的全流程。",
+                days: [
+                    { day: 36, topic: "Docker核心概念", concepts: ["镜像(Image) vs. 容器(Container)", "Dockerfile", "Docker Hub"], task: "安装Docker，并运行一个Hello World容器。", resources: ["Docker official 'Get Started' guide"] },
+                    { day: 37, topic: "编写Dockerfile", concepts: ["`FROM`, `WORKDIR`, `COPY`, `RUN`, `CMD`指令", "管理Python依赖(`requirements.txt`)"], task: "为之前的FastAPI项目编写一个Dockerfile。", resources: ["Dockerfile reference", "Dockerizing a Python Application"] },
+                    { day: 38, topic: "构建与运行Docker镜像", concepts: ["`docker build`", "`docker run`", "端口映射"], task: "构建你的FastAPI应用的Docker镜像，并成功运行容器。", resources: ["Docker `build` command reference"] },
+                    { day: 39, topic: "Docker-Compose多容器编排", concepts: ["`docker-compose.yml`文件", "服务(services)", "网络(networks)"], task: "创建一个`docker-compose.yml`来启动你的FastAPI应用。", resources: ["Docker Compose overview"] },
+                    { day: 40, topic: "项目二: 完善与打包", concepts: ["项目结构优化", "撰写完整的README.md", "将代码和Dockerfile推送到GitHub"], task: "完成情感分析API项目的全部代码和文档，并推送到GitHub。", resources: ["Your own project"] },
+                    { day: 41, topic: "Linux服务器基础部署", concepts: ["SSH连接", "安装Docker", "从Docker Hub拉取镜像并运行"], task: "（可选，如有云服务器）尝试在Linux服务器上部署你的Docker容器。", resources: ["DigitalOcean guide on installing Docker"] },
+                    { day: 42, topic: "休息与缓冲", concepts: ["整理笔记", "复盘"], task: "回顾整个模型部署流程，画出流程图。", resources: ["Your own notes"] }
+                ]
+            },
+            {
+                week: 7,
+                title: "第四阶段 (第7周): GitHub作品集与CI/CD",
+                goal: "打造专业的GitHub作品集，并了解自动化工作流。",
+                days: [
+                    { day: 43, topic: "优化GitHub Profile", concepts: ["Profile README", "Pinning Repositories"], task: "创建一个专业的GitHub Profile README。", resources: ["GitHub Docs on managing your profile README"] },
+                    { day: 44, topic: "项目文档标准化", concepts: ["撰写高质量的`README.md`", "添加`LICENSE`和`.gitignore`"], task: "为你之前的两个项目完善`README.md`，包括项目介绍、如何运行、API说明等。", resources: ["Awesome README templates"] },
+                    { day: 45, topic: "GitHub Actions入门", concepts: ["Workflow, Job, Step, Action", "YAML语法", "触发事件(on: push)"], task: "为你的一个项目创建一个简单的GitHub Actions workflow，在每次push时打印一条消息。", resources: ["GitHub Actions quickstart"] },
+                    { day: 46, topic: "使用GitHub Actions进行CI", concepts: ["持续集成(CI)", "设置Python环境", "安装依赖并运行测试"], task: "配置一个CI workflow，自动为你的代码运行linter（如flake8）或简单的单元测试。", resources: ["GitHub Actions for Python"] },
+                    { day: 47, topic: "简历优化: 项目经验部分", concepts: ["STAR法则(Situation, Task, Action, Result)", "量化成果"], task: "将你的两个项目经验按照STAR法则写入简历。", resources: ["Google's guide to resume writing"] },
+                    { day: 48, topic: "简历优化: 技能与总结部分", concepts: ["技能关键词", "个人总结"], task: "完善简历的技能清单，确保覆盖招聘要求中的关键词。", resources: ["AI/ML Engineer resume examples"] },
+                    { day: 49, topic: "第四阶段复盘(Part 1)", concepts: ["复盘CI/CD流程", "评估项目文档"], task: "请朋友或使用AI工具评估你的简历。", resources: ["Resume.io, VMock"] }
+                ]
+            },
+            {
+                week: 8,
+                title: "第四阶段 (第8周): 面试准备与总复习",
+                goal: "进行模拟面试，巩固所有技能，为求职做好最后准备。",
+                days: [
+                    { day: 50, topic: "AI/ML基础知识面试题", concepts: ["解释各种ML算法", "过拟合/欠拟合", "偏差/方差权衡"], task: "刷10-15道经典的机器学习理论面试题。", resources: ["'120 Data Science Interview Questions' on GitHub"] },
+                    { day: 51, topic: "Python与算法面试题", concepts: ["数据结构(list, dict)", "常见算法", "Pandas/NumPy难题"], task: "在LeetCode上刷5-10道相关的简单/中等题目。", resources: ["LeetCode, HackerRank"] },
+                    { day: 52, topic: "系统设计面试题(MLOps)", concepts: ["设计一个推荐系统", "设计一个实时预测API"], task: "阅读1-2篇关于机器学习系统设计的文章，并画出架构图。", resources: ["Grokking the Machine Learning Interview (online course/book)"] },
+                    { day: 53, topic: "行为面试题准备", concepts: ["自我介绍", "项目介绍", "团队合作", "职业规划"], task: "准备好针对常见行为面试问题的回答稿。", resources: ["'Cracking the Coding Interview' - Behavioral Questions chapter"] },
+                    { day: 54, topic: "模拟面试", concepts: ["进行一次完整的技术面试模拟", "获取反馈"], task: "找朋友或使用平台(如Pramp)进行一次模拟面试，并认真复盘。", resources: ["Pramp, interviewing.io"] },
+                    { day: 55, topic: "查漏补缺与总复习", concepts: ["回顾所有笔记", "巩固薄弱环节"], task: "根据模拟面试的反馈，重点复习自己掌握不牢的知识点。", resources: ["Your own notes and projects"] },
+                    { day: 56, topic: "投递简历与最终准备", concepts: ["寻找目标岗位", "定制化简历和求职信"], task: "开始在招聘平台上投递简历，为真实的面试做准备。", resources: ["LinkedIn, Indeed, etc."] },
+                ]
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('plan-container');
+            const startDate = new Date('2025-06-10T00:00:00');
+            let dayCounter = 0;
+
+            planData.forEach((weekData, index) => {
+                // Create week container
+                const weekDiv = document.createElement('div');
+                weekDiv.className = 'bg-white rounded-xl shadow-md overflow-hidden';
+                
+                // Create week header
+                const weekHeader = document.createElement('div');
+                weekHeader.className = 'week-header p-4 md:p-6 flex justify-between items-center bg-white hover:bg-slate-100';
+                weekHeader.innerHTML = `
+                    <div>
+                        <h2 class="text-xl font-bold text-indigo-600">第 ${weekData.week} 周</h2>
+                        <p class="text-sm text-slate-500 mt-1">${weekData.title}</p>
+                        <p class="text-sm text-slate-700 font-medium mt-2">${weekData.goal}</p>
+                    </div>
+                    <svg class="chevron w-6 h-6 text-slate-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                    </svg>
+                `;
+
+                // Create week content
+                const weekContent = document.createElement('div');
+                weekContent.className = 'week-content';
+                const dayList = document.createElement('div');
+                dayList.className = 'p-4 md:p-6 border-t border-slate-200 space-y-4';
+                
+                weekData.days.forEach(dayData => {
+                    const currentDate = new Date(startDate);
+                    currentDate.setDate(startDate.getDate() + dayCounter);
+                    const dateString = currentDate.toLocaleDateString('zh-CN', { month: 'long', day: 'numeric' });
+
+                    const dayCard = document.createElement('div');
+                    dayCard.className = 'p-4 rounded-lg bg-slate-50 border border-slate-200';
+                    dayCard.innerHTML = `
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="font-bold text-lg text-slate-800">第 ${dayData.day} 天: ${dayData.topic}</h3>
+                            <span class="text-sm font-medium text-indigo-500">${dateString}</span>
+                        </div>
+                        <div class="space-y-3 text-slate-700 text-sm">
+                            <div>
+                                <h4 class="font-semibold text-slate-900 mb-1">✔️ 学习概念 (Concepts):</h4>
+                                <ul class="list-disc list-inside pl-2 text-slate-600">
+                                    ${dayData.concepts.map(c => `<li>${c}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 mb-1">🎯 实践任务 (Actionable Task):</h4>
+                                <p class="pl-2 text-slate-600">${dayData.task}</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 mb-1">📚 核心资源 (Key Resources):</h4>
+                                <p class="pl-2 text-slate-600">${dayData.resources.join(', ')}</p>
+                            </div>
+                        </div>
+                    `;
+                    dayList.appendChild(dayCard);
+                    dayCounter++;
+                });
+
+                weekContent.appendChild(dayList);
+                weekDiv.appendChild(weekHeader);
+                weekDiv.appendChild(weekContent);
+                container.appendChild(weekDiv);
+
+                // Accordion logic
+                weekHeader.addEventListener('click', () => {
+                    weekHeader.classList.toggle('open');
+                    weekContent.classList.toggle('open');
+                });
+
+                // Open the first week by default
+                if (index === 0) {
+                     weekHeader.classList.add('open');
+                     weekContent.classList.add('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
